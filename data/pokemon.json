@@ -1,0 +1,127 @@
+[
+  {
+    "name": "charmander",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png",
+    "element": "fire"
+  },
+  {
+    "name": "squirtle",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png",
+    "element": "water"
+  },
+  {
+    "name": "bulbasaur",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png",
+    "element": "grass"
+  },
+  {
+    "name": "pikachu",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/pikachu.png",
+    "element": "electric"
+  },
+  {
+    "name": "mewtwo",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/mewtwo.png",
+    "element": "psychic"
+  },
+  {
+    "name": "mew",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/mew.png",
+    "element": "psychic"
+  },
+  {
+    "name": "jolteon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/jolteon.png",
+    "element": "electric"
+  },
+  {
+    "name": "flareon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/flareon.png",
+    "element": "fire"
+  },
+  {
+    "name": "vaporeon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/vaporeon.png",
+    "element": "water"
+  },
+  {
+    "name": "espeon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/espeon.png",
+    "element": "psychic"
+  },
+  {
+    "name": "umbreon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/umbreon.png",
+    "element": "dark"
+  },
+  {
+    "name": "leafeon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/leafeon.png",
+    "element": "grass"
+  },
+  {
+    "name": "glaceon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/glaceon.png",
+    "element": "ice"
+  },
+  {
+    "name": "vanillite",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/vanillite.png",
+    "element": "ice"
+  },
+  {
+    "name": "sandshrew",
+    "sprite": "https://img.pokemondb.net/sprites/x-y/normal/sandshrew.png",
+    "element": "ground"
+  },
+  {
+    "name": "sandslash",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/sandslash.png",
+    "element": "ground"
+  },
+  {
+    "name": "tauros",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/tauros.png",
+    "element": "fighting"
+  },
+  {
+    "name": "machamp",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/machamp.png",
+    "element": "fighting"
+  },
+  {
+    "name": "sudowoodo",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/sudowoodo-f.png",
+    "element": "rock"
+  },
+  {
+    "name": "nosepass",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/nosepass.png",
+    "element": "rock"
+  },
+  {
+    "name": "meowth",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/meowth.png",
+    "element": "dark"
+  },
+  {
+    "name": "klink",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/klink.png",
+    "element": "steel"
+  },
+  {
+    "name": "klang",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/klang.png",
+    "element": "steel"
+  },
+  {
+    "name": "sylveon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/sylveon.png",
+    "element": "fairy"
+  },
+  {
+    "name": "togepi",
+    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/togepi.png",
+    "element": "fairy"
+  }
+]

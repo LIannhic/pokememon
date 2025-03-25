@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  background-color: #000;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* css animation */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 1em;
+  user-select: none;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.shake {
+  animation: shake 0.2s linear infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, 5px); }
+  50% { transform: translate(5px, -5px); }
+  75% { transform: translate(-5px, -5px); }
+  100% { transform: translate(5px, 5px); }
+}
+
+.punch {
+  position: absolute;
+  font-size: 1em;
+  user-select: none;
+  opacity: 0.8;
+  animation: hit linear infinite;
+}
+
+@keyframes hit {
+  0% {
+    transform: scale(2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(10);
+    opacity: 0;
+  }
+}
+
+.roche {
+  position: absolute;
+  top: var(--hauteur);
+  user-select: none;
+  animation: chute 0.2s forwards;
+}
+
+@keyframes chute {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.star {
+  position: absolute;
+  top: -10px;
+  user-select: none;
+  opacity: 0.8;
+  animation: dust 4s linear forwards;
+}
+
+@keyframes dust {
+  0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.8;
+  }
+  20% {
+      transform: translateY(20vh) translateX(-15px);
+  }
+  40% {
+      transform: translateY(40vh) translateX(0px);
+  }
+  60% {
+      transform: translateY(60vh) translateX(15px);
+  }
+  80% {
+      transform: translateY(80vh) translateX(0px);
+  }
+  100% {
+      transform: translateY(100vh) translateX(-15px);
+      opacity: 0;
+  }
+}
+
+@keyframes flouEtDeformation {
+  0% {
+    filter: blur(0px);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  25% {
+    filter: blur(2px);
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+
+  50% {
+    filter: blur(4px);
+    transform: scale(1.1) rotate(-2deg);
+    opacity: 0.8;
+  }
+
+  75% {
+    filter: blur(2px);
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+
+  100% {
+    filter: blur(0px);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Animation de la Pokéball */
+.pokeball_de_capture {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  user-select: none;
+  animation: throw 1s linear forwards;
+}
+
+@keyframes throw {
+  0% {
+    transform: translate(0, 0) scale(2) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--cible-x), var(--cible-y)) scale(0.4) rotate(720deg);
+    opacity: 0.2;
+  }
+}
+
+.progress {
+  width: 50%;
+}
+
+.progress-bar {
+  width: var(--resteDelaBarreDeVie, 100%);
+  height: 20px;
+  background-color: red;
+  transition: width 0.3s ease-in-out;
+}
+
+
+/* Style des cases */
+.box {
+  min-height: 100px;
+  position: relative;
+}
+
+.box .bush {
+  width: 100%;
+  height: auto;
+  animation: bounce 0.7s;
+}
+
+.box .bush:hover {
+  cursor: pointer;
+  animation: headShake 0.7s;
+  animation-iteration-count: 1;
+}
+
+.box .pokemon,
+.box .pokeball {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.box .pokeball {
+  height: 60%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+/* Zones de capture */
+.zoneDeCapture {
+  row-gap: 10px;
+}
+
+#rejouer {
+  display: none;
+  margin-top: 20px;
+}
+
+/* Barre latérale */
+#sidebar {
+  position: fixed;
+  padding-left: 18px;
+  top: 9rem;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.5);
+  border-right: 2px solid #fff;
+}
+
+#sidebar .liste_pokemons_captures {
+  display: flex;
+  flex-direction: column;
+}
+
+#sidebar .liste_pokemons_captures img {
+  width: 50%;
+  height: auto;
+}
+
+/* Style des images des cartes */
+.box img.pokeball,
+.box img.bush,
+.box img.pokemon {
+  height: 100px;
+  width: auto;
+  object-fit: contain;
+}
+
+.box {
+  min-height: 60px;
+}
+
+.box img.pokeball,
+.box img.bush,
+.box img.pokemon {
+  height: 100px;
+  width: auto;
+}
