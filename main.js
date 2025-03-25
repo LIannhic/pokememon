@@ -10,6 +10,8 @@ import { startFireAnimation } from './animationFeu.js';
 import { afficherBarreChromee } from './animationMetal.js';
 import { creerEboulement } from './animationRoche.js';
 import { createtinkle } from './animationFee.js';
+import {launchEpicWave} from './animationEau.js'
+import {launchPoisonEffect} from './animationPoison.js'
 
 const rejouer = document.getElementById('rejouer');
 let compteurDeCoupDeLaPartieEnCours = document.getElementById("stat_nombre_de_coups_partie_en_cours");
@@ -308,6 +310,10 @@ async function jouer(unNombreDePaire) {
                             afficherBarreChromee();
                         } else if (img1.role == "fairy") {
                             createtinkle();
+                        } else if (img1.role == "water") {
+                            launchEpicWave();
+                        } else if (img1.role == "poison") {
+                            launchPoisonEffect();
                         }
                         
                         lancerPokeball(cartesRetournees);
@@ -356,7 +362,7 @@ async function jouer(unNombreDePaire) {
 }
 
 // Démarrer le jeu
-let monNombreDePaire = 2;
+let monNombreDePaire = 6;
 
 jouer(monNombreDePaire);
 
