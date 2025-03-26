@@ -65,7 +65,7 @@ async function jouer(unNombreDePaire) {
 
     // Récupération des Pokémon depuis le fichier JSON
     const response = await fetch('./data/pokemon.json');
-    const maListeDePokemons = await response.json();
+    const maListeDePokemonsComplete = await response.json();
     
     
     const banqueDeSon = {
@@ -101,18 +101,57 @@ async function jouer(unNombreDePaire) {
         }
     }
     
-
     function melangerUneListe(uneListe) {
         return uneListe.sort(() => Math.random() - 0.5);
     }
 
-    function faireUneListeDePaireDePokemon(uneListeDePokemonComplete, unNombreDePaire) {
-        let listeMelangee = melangerUneListe(uneListeDePokemonComplete);
-        let listeReduite = listeMelangee.slice(0, unNombreDePaire);
-        let listePaire = [...listeReduite, ...listeReduite];
-        return melangerUneListe(listePaire);
+    // function faireUneListeDePaireDePokemon(uneListeDePokemonComplete, unNombreDePaire) {
+    //     let listeMelangee = melangerUneListe(uneListeDePokemonComplete);
+    //     let listeReduite = listeMelangee.slice(0, unNombreDePaire);
+    //     let listePaire = [...listeReduite, ...listeReduite];
+    //     return melangerUneListe(listePaire);
+    // }
+    
+    function faireUneListeDePokemonsReduite(uneListeDePokemonsComplete, unNombreDePaire) {
+        let uneListeDePokemonsReduite = uneListeDePokemonsComplete.slice(0, unNombreDePaire);
+        return uneListeDePokemonsReduite;
     }
-
+    
+    function faireUnelisteDelistesDePokemons(uneListeDePokemonsReduite, unNombreDePaireParZoneDeChasse) {
+        let uneListeDeListesDePokemons = [];
+        for (let i = 0; i < uneListeDePokemonsReduite.length; i += unNombreDePaireParZoneDeChasse) {
+            uneListeDeListesDePokemons.push(uneListeDePokemonsReduite.slice(i, i + unNombreDePaireParZoneDeChasse));
+        }
+        return uneListeDeListesDePokemons;
+    }
+    
+    function faireUneListeDeListesDePaireDePokemons(uneListeDeListesDePokemons) {
+        let uneListeDeListesDePaireDePokemons = [];
+        for (let i = 0; i < uneListeDeListesDePokemons.length; i++) {
+            uneListeDeListesDePaireDePokemons[i] = [...uneListeDeListesDePokemons[i],...uneListeDeListesDePokemons[i]]
+        }
+        return uneListeDeListesDePaireDePokemons
+    }
+    
+    function melangerUneListeDansUneListe(uneListeDeListes) {
+        let uneListeDeListesMelangees = uneListeDeListes;
+        for (let i = 0; i < uneListeDeListes.length; i++) {
+            uneListeDeListes[i].sort(() => Math.random() - 0.5);
+        }
+        return uneListeDeListesMelangees;
+    }
+    
+    (async () => {
+        const monNombreDePaire = 6;
+        const monNombreDePaireParZoneDeChasse = 8;
+        const maListeDePokemonsComplete = faireUneListeDePokemonComplete();
+        const maListeDePokemonsReduite = faireUneListeDePokemonsReduite(maListeDePokemonsComplete, monNombreDePaire);
+        const maListeDeListesDePokemons = faireUnelisteDelistesDePokemons(maListeDePokemonsReduite, monNombreDePaireParZoneDeChasse);
+        const maListeDeListesDePaireDePokemons = faireUneListeDeListesDePaireDePokemons(maListeDeListesDePokemons);
+        const maListeDeListesDePaireDePokemonsMelangees = melangerUneListeDansUneListe(maListeDeListesDePaireDePokemons);
+        console.log(maListeDeListesDePaireDePokemonsMelangees);
+    })();
+    
     function creerUnBoutonDeDeplacement(index) {
         let btn = document.createElement("button");
         btn.innerText = `Zone ${index + 1}`;
@@ -184,15 +223,20 @@ async function jouer(unNombreDePaire) {
         });
     }
 
-    function creerLaFaceDesCartes(uneListeDePokemon) {
-        document.querySelectorAll('.box').forEach((carte, index) => {
-            const pokemon = uneListeDePokemon[index];
-            const faceDeCarte = document.createElement("img");
-            faceDeCarte.src = pokemon.sprite;
-            faceDeCarte.title = pokemon.name;
-            faceDeCarte.role = pokemon.element;
-            faceDeCarte.classList.add("pokemon", "d-none");
-            carte.appendChild(faceDeCarte);
+    function creerLaFaceDesCartes(uneListeDeListesDePaireDePokemonsMelangees) {
+        const zones = document.querySelectorAll('.zoneDeCapture');
+        zones.forEach((zone, index) => {
+            const uneListeDePaireDePokemonsMelangee = uneListeDeListesDePaireDePokemonsMelangees[index]; // Récupère la liste pour cette zone
+            const cartes = zone.querySelectorAll('.box');
+            cartes.forEach((carte, index) => {
+                const pokemon = uneListeDePaireDePokemonsMelangee[index];
+                const faceDeCarte = document.createElement("img");
+                faceDeCarte.src = pokemon.sprite;
+                faceDeCarte.title = pokemon.name;
+                faceDeCarte.role = pokemon.element;
+                faceDeCarte.classList.add("pokemon", "d-none");
+                carte.appendChild(faceDeCarte);
+            });
         });
     }
 
@@ -212,7 +256,7 @@ async function jouer(unNombreDePaire) {
                 pokeball.classList.add("pokeball");
                 carte.appendChild(pokeball);
             });
-        }, 2000);
+        }, 1000);
     }
 
     function ajouterAuPokedex(image) {
@@ -220,17 +264,6 @@ async function jouer(unNombreDePaire) {
         pokemon.src = image;
         pokedex.appendChild(pokemon);
     }
-    // function controlePokedex() {
-    //     let pokedex = document.querySelector(".liste_pokemons_captures");
-    //     if (pokedex.children.length === 8) {
-
-    //         pokedex.children.forEach((pokemon) => {
-
-        
-                
-    //         });
-// setTimeout(() => {
-// console.log(document.querySelectorAll('.box'))}, 10000);
 
     function lancerPokeball(cartes) {
         cartes.forEach((carte, index) => {
@@ -327,13 +360,13 @@ async function jouer(unNombreDePaire) {
                         } else if (img1.role == "psychic") {
                             lancerHallucination({
                                 duration: '4s'
-                              });
+                            });
                         } else if (img1.role == "dark") {
                             initDarkenEffect({
                                 darknessIncrement: 0.01, // chaque pas = 0.01 opacité
                                 animationIntervalDelay: 40, // 40ms par pas
                                 resetDelayAfterDark: 0 // facultatif, ou mets genre 500 pour laisser le noir un peu avant de disparaître
-                              });
+                            });
                         } else if (img1.role == "grass") {
                             initFeuilles();
                         } else if (img1.role== "electric") {
@@ -349,10 +382,7 @@ async function jouer(unNombreDePaire) {
                         } else if (img1.role == "poison") {
                             launchPoisonEffect();
                         }
-                              
                         
-                              
-                          
                         lancerPokeball(cartesRetournees);
                         ajouterAuPokedex(img1.src);
                         jouerCriPokemon(banqueDeSon, img1.title);
@@ -391,10 +421,15 @@ async function jouer(unNombreDePaire) {
     }
 
     remplirBarreDeVie();
-    const maListeDePaireDePokemons = faireUneListeDePaireDePokemon(maListeDePokemons, monNombreDePaire);
+    const monNombreDePaireParZoneDeChasse = 8;
+    const maListeDePokemonsCompleteEtMelangee = melangerUneListe(maListeDePokemonsComplete)
+    const maListeDePokemonsReduite = faireUneListeDePokemonsReduite(maListeDePokemonsCompleteEtMelangee, monNombreDePaire);
+    const maListeDeListesDePokemons = faireUnelisteDelistesDePokemons(maListeDePokemonsReduite, monNombreDePaireParZoneDeChasse);
+    const maListeDeListesDePaireDePokemons = faireUneListeDeListesDePaireDePokemons(maListeDeListesDePokemons);
+    const maListeDeListesDePaireDePokemonsMelangees = melangerUneListeDansUneListe(maListeDeListesDePaireDePokemons);
     creerLesEmplacementsDesCartes(monNombreDePaire);
     creerLeDosDesCartes();
-    creerLaFaceDesCartes(maListeDePaireDePokemons);
+    creerLaFaceDesCartes(maListeDeListesDePaireDePokemonsMelangees);
     retournerUneCarte();
 }
 
