@@ -1,5 +1,6 @@
 export   function creerEboulement() {
     const eboulementContainer = document.createDocumentFragment();
+
     for (let i = 0; i < 80; i++) {
         let roche = document.createElement("div");
         roche.className = "roche";

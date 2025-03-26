@@ -1,7 +1,7 @@
 export function createtinkle() {
     const stars = ["*", "⁕", "⁎", "⋇", "⨳", "☆", "❁", "✿", "✧", "★"];
     const colors = ["red", "yellow", "green", "blue", "purple", "cyan", "orange", "pink"];
-    const starContainer = document.createDocumentFragment();
+
     for (let i = 0; i < 121; i++) {
         let star = document.createElement("div");
         star.className = "star";
@@ -22,13 +22,12 @@ export function createtinkle() {
         changeColor();
         const colorInterval = setInterval(changeColor, 100);
 
-        starContainer.appendChild(star);
-
         // Supprimer l'étoile après 4 secondes
         setTimeout(() => {
             clearInterval(colorInterval);
             star.remove();
         }, 4000);
+
+        document.body.appendChild(star);
     }
-    document.body.appendChild(starContainer)
 }

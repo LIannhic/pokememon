@@ -10,13 +10,36 @@ import { startFireAnimation } from './animationFeu.js';
 import { afficherBarreChromee } from './animationMetal.js';
 import { creerEboulement } from './animationRoche.js';
 import { createtinkle } from './animationFee.js';
-import {launchEpicWave} from './animationEau.js'
-import {launchPoisonEffect} from './animationPoison.js'
+import { launchEpicWave } from './animationEau.js';
+import { launchPoisonEffect } from './animationPoison.js';
+import { launchRayquazaIntro } from './animationDragon.js';
+import { playDiagonalEffect } from './animationVol.js';
+import { startBlueFlameCircle } from './animationFantome.js';
+import { normalEffet } from './animationNormal.js';
+import { degatEffet } from './animationDegat.js';
+import { insectTypeSwarmAnimation } from './animationInsecte.js';
+
+
 
 const rejouer = document.getElementById('rejouer');
 let compteurDeCoupDeLaPartieEnCours = document.getElementById("stat_nombre_de_coups_partie_en_cours");
 let compteurDeCoupRecord = document.getElementById("stat_nombre_de_coups_record");
 let pokedex = document.querySelector(".liste_pokemons_captures");
+
+
+// launchRayquazaIntro({
+//     imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png',
+//     duration: 1000
+//   });
+
+// playDiagonalEffect();
+
+// startBlueFlameCircle();
+
+// normalEffet();
+
+insectTypeSwarmAnimation();
+
 
 // Récupérer le record depuis le localStorage
 let recordSauvegarde = localStorage.getItem("record");
@@ -197,6 +220,17 @@ async function jouer(unNombreDePaire) {
         pokemon.src = image;
         pokedex.appendChild(pokemon);
     }
+    // function controlePokedex() {
+    //     let pokedex = document.querySelector(".liste_pokemons_captures");
+    //     if (pokedex.children.length === 8) {
+
+    //         pokedex.children.forEach((pokemon) => {
+
+        
+                
+    //         });
+// setTimeout(() => {
+// console.log(document.querySelectorAll('.box'))}, 10000);
 
     function lancerPokeball(cartes) {
         cartes.forEach((carte, index) => {
@@ -293,13 +327,13 @@ async function jouer(unNombreDePaire) {
                         } else if (img1.role == "psychic") {
                             lancerHallucination({
                                 duration: '4s'
-                            });
+                              });
                         } else if (img1.role == "dark") {
                             initDarkenEffect({
                                 darknessIncrement: 0.01, // chaque pas = 0.01 opacité
                                 animationIntervalDelay: 40, // 40ms par pas
                                 resetDelayAfterDark: 0 // facultatif, ou mets genre 500 pour laisser le noir un peu avant de disparaître
-                            });
+                              });
                         } else if (img1.role == "grass") {
                             initFeuilles();
                         } else if (img1.role== "electric") {
@@ -315,7 +349,10 @@ async function jouer(unNombreDePaire) {
                         } else if (img1.role == "poison") {
                             launchPoisonEffect();
                         }
+                              
                         
+                              
+                          
                         lancerPokeball(cartesRetournees);
                         ajouterAuPokedex(img1.src);
                         jouerCriPokemon(banqueDeSon, img1.title);

@@ -1,3 +1,4 @@
+/* Réinitialisation et styles généraux */
 body {
   margin: 0;
   background-color: #000;
@@ -5,7 +6,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* css animation */
+/* Effet de neige */
 .snowflake {
   position: absolute;
   top: -10px;
@@ -27,6 +28,7 @@ body {
   }
 }
 
+/* Effet de tremblement */
 .shake {
   animation: shake 0.2s linear infinite;
 }
@@ -62,7 +64,7 @@ body {
   position: absolute;
   top: var(--hauteur);
   user-select: none;
-  animation: chute 0.2s forwards;
+  animation: chute 0.2s forwards; /* Animation de chute */
 }
 
 @keyframes chute {
@@ -76,68 +78,6 @@ body {
   }
 }
 
-.star {
-  position: absolute;
-  top: -10px;
-  user-select: none;
-  opacity: 0.8;
-  animation: dust 4s linear forwards;
-}
-
-@keyframes dust {
-  0% {
-      transform: translateY(0) translateX(0);
-      opacity: 0.8;
-  }
-  20% {
-      transform: translateY(20vh) translateX(-15px);
-  }
-  40% {
-      transform: translateY(40vh) translateX(0px);
-  }
-  60% {
-      transform: translateY(60vh) translateX(15px);
-  }
-  80% {
-      transform: translateY(80vh) translateX(0px);
-  }
-  100% {
-      transform: translateY(100vh) translateX(-15px);
-      opacity: 0;
-  }
-}
-
-@keyframes flouEtDeformation {
-  0% {
-    filter: blur(0px);
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-
-  25% {
-    filter: blur(2px);
-    transform: scale(1.05) rotate(2deg);
-    opacity: 0.9;
-  }
-
-  50% {
-    filter: blur(4px);
-    transform: scale(1.1) rotate(-2deg);
-    opacity: 0.8;
-  }
-
-  75% {
-    filter: blur(2px);
-    transform: scale(1.05) rotate(2deg);
-    opacity: 0.9;
-  }
-
-  100% {
-    filter: blur(0px);
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
 
 /* Animation de la Pokéball */
 .pokeball_de_capture {
@@ -244,6 +184,38 @@ body {
   height: 100px;
   width: auto;
   object-fit: contain;
+}
+
+@keyframes flouEtDeformation {
+  0% {
+    filter: blur(0px);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  25% {
+    filter: blur(2px);
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+
+  50% {
+    filter: blur(4px);
+    transform: scale(1.1) rotate(-2deg);
+    opacity: 0.8;
+  }
+
+  75% {
+    filter: blur(2px);
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+
+  100% {
+    filter: blur(0px);
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .box {
