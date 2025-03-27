@@ -19,31 +19,10 @@ import { normalEffet } from './animationNormal.js';
 import { degatEffet } from './animationDegat.js';
 import { insecteEssaim } from './animationInsecte.js';
 
-
-
-
 const rejouer = document.getElementById('rejouer');
 let compteurDeCoupDeLaPartieEnCours = document.getElementById("stat_nombre_de_coups_partie_en_cours");
 let compteurDeCoupRecord = document.getElementById("stat_nombre_de_coups_record");
 let pokedex = document.querySelector(".liste_pokemons_captures");
-
-afficherBarreChromee();
-
-// launchRayquazaIntro({
-//     imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png',
-//     duration: 1000
-//   });
-
-// playDiagonalEffect();
-
-// startBlueFlameCircle();
-
-// normalEffet();
-
-
-
-
-// Récupérer le record depuis le localStorage
 let recordSauvegarde = localStorage.getItem("record");
 compteurDeCoupRecord.textContent = recordSauvegarde ? recordSauvegarde : "∞";
 
