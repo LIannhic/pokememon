@@ -282,8 +282,6 @@ async function jouer(unNombreDePaire) {
             setTimeout(() => {
                 pokeball.remove();
                 capturerPaireDePokemons(cartes);
-                const positionPokeball = pokeball.getBoundingClientRect();
-                console.log(positionPokeball)
             }, 1000);
         });
     }
@@ -349,9 +347,6 @@ async function jouer(unNombreDePaire) {
                     let [carte1, carte2] = cartesRetournees;
                     let img1 = carte1.querySelector('.pokemon');
                     let img2 = carte2.querySelector('.pokemon');
-                    let positionImage1 = img1.getBoundingClientRect()
-                    console.log(positionImage1);
-
                     if (img1.src === img2.src) {
                         if (img1.role == "ice") {
                             creerFlocons();                           
