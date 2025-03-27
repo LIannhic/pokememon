@@ -158,8 +158,6 @@ async function jouer(unNombreDePaire) {
 
     function surpriseDuDeplacement() {
         const boutonsDeDeplacement = document.querySelectorAll(".btn-chasse"); // Sélectionner tous les boutons avec la classe .btn-chasse
-        console.log(boutonsDeDeplacement);
-        
         if (boutonsDeDeplacement.length === 1) { // Vérifier s'il n'y a qu'un seul bouton
             boutonsDeDeplacement[0].style.display = "none"; // Masquer le seul bouton
         }
