@@ -4,7 +4,7 @@ export function createtinkle() {
 
     for (let i = 0; i < 121; i++) {
         let star = document.createElement("div");
-        star.className = "star";
+        star.className = "fairy-dust";
         star.innerHTML = stars[Math.floor(Math.random() * stars.length)];
         star.style.left = Math.random() * 100 + "vw";
         star.style.animationDuration = "4s"; // Durée de 4s

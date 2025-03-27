@@ -121,5 +121,47 @@
   {"name": "togepi",
   "sprite": "https://img.pokemondb.net/sprites/black-white/normal/togepi.png",
   "element": "fairy"
+  },
+  {"name": "volbeat",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/volbeat.png",
+  "element": "bug"
+  },
+  {"name": "illumise",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/illumise.png",
+  "element": "bug"
+  },
+  {"name": "dratini",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/dratini.png",
+  "element": "dragon"
+  },
+  {"name": "shelgon",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/shelgon.png",
+  "element": "dragon"
+  },
+  {"name": "raticate",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/raticate.png",
+  "element": "normal"
+  },
+  {"name": "arceus",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/arceus.png",
+  "element": "normal"
+  },
+  {"name": "tornadus",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/tornadus.png",
+  "element": "flying"
+  },
+  {"name": "pidgeot",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/pidgeot.png",
+  "element": "flying"
+  },
+  {"name": "banette",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/banette.png",
+  "element": "ghost"
+  },
+  {"name": "dusclops",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/dusclops.png",
+  "element": "ghost"
   }
+
+
 ]

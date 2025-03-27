@@ -1,75 +1,112 @@
-export function insectTypeSwarmAnimation() {
-    const canvas = document.createElement("canvas");
-    canvas.style.position = "fixed";
-    canvas.style.top = 0;
-    canvas.style.left = 0;
-    canvas.style.width = "100vw";
-    canvas.style.height = "100vh";
-    canvas.style.pointerEvents = "none";
-    canvas.style.zIndex = 9999;
-    document.body.appendChild(canvas);
-  
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  
-    const width = canvas.width;
-    const height = canvas.height;
-  
-    const insects = [];
-    const duration = 4000;
-    const startTime = performance.now();
-  
-    const clusters = 5; // Insectes regroupés à plusieurs endroits
-    const insectsPerCluster = 40;
-  
-    for (let i = 0; i < clusters; i++) {
-      const centerX = Math.random() * width;
-      const centerY = Math.random() * height;
-  
-      for (let j = 0; j < insectsPerCluster; j++) {
-        insects.push({
-          x: centerX + (Math.random() - 0.5) * 100,
-          y: centerY + (Math.random() - 0.5) * 100,
-          radius: 1 + Math.random() * 1.5,
-          speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          angle: Math.random() * Math.PI * 2,
-          wiggle: Math.random() * 50
-        });
-      }
-    }
-  
-    function draw(timestamp) {
-      const elapsed = timestamp - startTime;
-      ctx.clearRect(0, 0, width, height);
-  
-      insects.forEach(insect => {
-        insect.wiggle += 0.1;
-        insect.x += Math.cos(insect.wiggle) * 0.3 + insect.speedX;
-        insect.y += Math.sin(insect.wiggle) * 0.3 + insect.speedY;
-  
-        // Dessin avec couleurs sombres
-        const gradient = ctx.createRadialGradient(
-          insect.x, insect.y, 0,
-          insect.x, insect.y, insect.radius * 2
-        );
-        gradient.addColorStop(0, "rgba(0, 0, 0, 0.6)"); // vert sombre / marron
-        gradient.addColorStop(1, "rgb(0, 0, 0)");
-  
-        ctx.beginPath();
-        ctx.fillStyle = gradient;
-        ctx.arc(insect.x, insect.y, insect.radius, 0, Math.PI * 2);
-        ctx.fill();
+export function insecteEssaim() {
+  const canvas = document.createElement("canvas");
+  canvas.style.position = "fixed";
+  canvas.style.top = 0;
+  canvas.style.left = 0;
+  canvas.style.width = "100vw";
+  canvas.style.height = "100vh";
+  canvas.style.pointerEvents = "none";
+  canvas.style.zIndex = 9999;
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const width = canvas.width;
+  const height = canvas.height;
+  const center = { x: width / 2, y: height / 2 };
+
+  const duration = 4000;
+  const expansionDuration = 2000;
+  const startTime = performance.now();
+
+  const spawnPoints = [
+    { x: 0, y: 0 },
+    { x: width / 2, y: 0 },
+    { x: width, y: 0 },
+    { x: 0, y: height },
+    { x: width / 2, y: height },
+    { x: width, y: height }
+  ];
+
+  const insects = [];
+  const insectsPerPoint = 400;
+
+  spawnPoints.forEach(point => {
+    for (let i = 0; i < insectsPerPoint; i++) {
+      const spread = 150;
+      const offsetX = (Math.random() - 0.5) * spread;
+      const offsetY = (Math.random() - 0.5) * spread;
+
+      insects.push({
+        startX: point.x + offsetX,
+        startY: point.y + offsetY,
+        x: point.x + offsetX,
+        y: point.y + offsetY,
+        radius: 2 + Math.random() * 2,
+        progress: 0,
+        speed: 0.004 + Math.random() * 0.003,
+        wiggle: Math.random() * 100
       });
-  
-      if (elapsed < duration) {
-        requestAnimationFrame(draw);
-      } else {
-        canvas.remove();
+    }
+  });
+
+  let expansionStart = null;
+
+  function draw(timestamp) {
+    const elapsed = timestamp - startTime;
+    ctx.clearRect(0, 0, width, height);
+
+    let allArrived = true;
+
+    // Phase 1 : insectes qui vont vers le centre
+    insects.forEach(insect => {
+      if (insect.progress < 1) {
+        insect.progress += insect.speed;
+        allArrived = false;
+      }
+
+      const wiggleX = Math.sin(insect.wiggle + insect.progress * 10) * 1.5;
+      const wiggleY = Math.cos(insect.wiggle + insect.progress * 10) * 1.5;
+
+      insect.x = insect.startX + (center.x - insect.startX) * insect.progress + wiggleX;
+      insect.y = insect.startY + (center.y - insect.startY) * insect.progress + wiggleY;
+
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(0, 0, 0, 0.9)";
+      ctx.arc(insect.x, insect.y, insect.radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    // Phase 2 : démarrer expansion centrale
+    if (allArrived && expansionStart === null) {
+      expansionStart = timestamp;
+    }
+
+    if (expansionStart !== null) {
+      const progress = Math.min((timestamp - expansionStart) / expansionDuration, 1);
+      const expandedCount = Math.floor(progress * 600); // nombre d'insectes à afficher
+
+      for (let i = 0; i < expandedCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * progress * 150;
+        const x = center.x + Math.cos(angle) * distance;
+        const y = center.y + Math.sin(angle) * distance;
+
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+        ctx.arc(x, y, 2 + Math.random() * 1.5, 0, Math.PI * 2);
+        ctx.fill();
       }
     }
-  
-    requestAnimationFrame(draw);
+
+    if (elapsed < duration + expansionDuration) {
+      requestAnimationFrame(draw);
+    } else {
+      canvas.remove();
+    }
   }
-  
+
+  requestAnimationFrame(draw);
+}

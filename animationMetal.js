@@ -11,8 +11,14 @@ export function afficherBarreChromee() {
 
     // Crée la barre
     const barre = document.createElement('div');
+    let largeur = window.innerHeight;
+    let hauteur = window.innerHeight;
+
+    // Calcul de la diagonale avec Pythagore
+    let longueur = Math.sqrt(Math.pow(largeur, 2) + Math.pow(hauteur, 2));
     Object.assign(barre.style, {
-      width: '1150px',
+
+      width: `${longueur+100}px`,
       height: '60px',
       background: 'linear-gradient(90deg, #ccc, #fff, #aaa, #fff, #ccc)',
       backgroundSize: '200% 100%',

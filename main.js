@@ -17,7 +17,8 @@ import { playDiagonalEffect } from './animationVol.js';
 import { startBlueFlameCircle } from './animationFantome.js';
 import { normalEffet } from './animationNormal.js';
 import { degatEffet } from './animationDegat.js';
-import { insectTypeSwarmAnimation } from './animationInsecte.js';
+import { insecteEssaim } from './animationInsecte.js';
+
 
 
 
@@ -26,6 +27,7 @@ let compteurDeCoupDeLaPartieEnCours = document.getElementById("stat_nombre_de_co
 let compteurDeCoupRecord = document.getElementById("stat_nombre_de_coups_record");
 let pokedex = document.querySelector(".liste_pokemons_captures");
 
+afficherBarreChromee();
 
 // launchRayquazaIntro({
 //     imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png',
@@ -38,7 +40,7 @@ let pokedex = document.querySelector(".liste_pokemons_captures");
 
 // normalEffet();
 
-insectTypeSwarmAnimation();
+
 
 
 // Récupérer le record depuis le localStorage
@@ -322,7 +324,8 @@ async function jouer(unNombreDePaire) {
     function prendreDesCoups(unNombreDePaire) {
         let uneBarreDeVie = document.querySelector(".progress-bar");
         const coup = 100 / (unNombreDePaire * 1.5);
-        vieRestante = Math.max(0, vieRestante - coup); // Réduit les points de vie
+        vieRestante = Math.max(0, vieRestante - coup);
+        degatEffet(); // Réduit les points de vie
         uneBarreDeVie.style.setProperty("--resteDelaBarreDeVie", vieRestante + "%");
         document.querySelector(".progress").setAttribute("aria-valuenow", vieRestante);
     
@@ -400,6 +403,19 @@ async function jouer(unNombreDePaire) {
                             launchEpicWave();
                         } else if (img1.role == "poison") {
                             launchPoisonEffect();
+                        } else if (img1.role == "dragon") {
+                            launchRayquazaIntro({
+                                imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png',
+                                duration: 1000
+                        });
+                        } else if (img1.role == "flying") {
+                            playDiagonalEffect();
+                        } else if (img1.role == "ghost") {
+                            startBlueFlameCircle();
+                        } else if (img1.role == "normal") {
+                            normalEffet();
+                        } else if (img1.role == "bug") {
+                            insecteEssaim();
                         }
                         
                         lancerPokeball(cartesRetournees);
