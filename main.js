@@ -451,7 +451,7 @@ let monNombreDePaire = 6;
 jouer(monNombreDePaire);
 
 rejouer.addEventListener('click', () => {
-    if (monNombreDePaire < 20) {
+    if (monNombreDePaire < 34) {
         monNombreDePaire += 2;
     }
     jouer(monNombreDePaire);
