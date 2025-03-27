@@ -302,18 +302,37 @@ async function jouer(unNombreDePaire) {
                 console.log(positionPokeball)
             }, 1000);
         });
-    }    
+    }
+
+    function arreterLeJeu() {
+        let cartes = document.querySelectorAll('.bush');
+        cartes.forEach(carte => {
+            carte.removeEventListener('click', );
+        });
+        let boutonsDeDeplacement = document.querySelectorAll(".btn-chasse");
+        boutonsDeDeplacement.forEach(bouton => {
+            bouton.disabled = true;
+        });
+        document.body.style.pointerEvents = "none";
+    }
 
     let mesPointsDeVieDeDepart = 100;
     let vieRestante = mesPointsDeVieDeDepart;
-    
-    function prendreDesCoups() {
+
+    function prendreDesCoups(unNombreDePaire) {
         let uneBarreDeVie = document.querySelector(".progress-bar");
-        vieRestante = Math.max(0, vieRestante - 10);
+        const coup = 100 / (unNombreDePaire * 1.5);
+        vieRestante = Math.max(0, vieRestante - coup); // Réduit les points de vie
         uneBarreDeVie.style.setProperty("--resteDelaBarreDeVie", vieRestante + "%");
         document.querySelector(".progress").setAttribute("aria-valuenow", vieRestante);
+    
         if (vieRestante === 0) {
-            setTimeout(() => alert("Vous avez perdu !"), 500);
+            // Si la vie atteint 0, on arrête le jeu et on affiche le bouton de rejouer
+            setTimeout(() => {
+                alert("Vous avez perdu !");
+                arreterLeJeu();  // Arrêter le jeu
+                afficherLeBoutonRejouer();  // Afficher le bouton de rejouer
+            }, 1000);
         }
     }
 
@@ -406,7 +425,7 @@ async function jouer(unNombreDePaire) {
                         document.body.style.pointerEvents = "auto";
                     } else {
                         setTimeout(() => {
-                            prendreDesCoups()
+                            prendreDesCoups(monNombreDePaire);
                             apparitionDUnCoteDUneCarte(carte1.querySelector('.bush'));
                             disparitionDUnCoteDUneCarte(carte1.querySelector('.pokemon'));
                             apparitionDUnCoteDUneCarte(carte2.querySelector('.bush'));
