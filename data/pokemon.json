@@ -161,7 +161,13 @@
   {"name": "dusclops",
   "sprite": "https://img.pokemondb.net/sprites/black-white/normal/dusclops.png",
   "element": "ghost"
+  },
+  {"name": "arbok",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/arbok.png",
+  "element": "poison"
+  },
+  {"name": "weezing",
+  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/weezing.png",
+  "element": "poison"
   }
-
-
 ]
