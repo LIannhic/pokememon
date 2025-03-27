@@ -1,32 +1,32 @@
 [
   {
     "name": "charmander",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png",
+    "sprite": "./assets/charmander.png",
     "element": "fire"
   },
   {
     "name": "squirtle",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png",
+    "sprite": "./assets/squirtle.png",
     "element": "water"
   },
   {
     "name": "bulbasaur",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/bulbasaur.png",
+    "sprite": "./assets/bulbasaur.png",
     "element": "grass"
   },
   {
     "name": "pikachu",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/pikachu.png",
+    "sprite": "./assets/pikachu.png",
     "element": "electric"
   },
   {
-    "name": "mewtwo",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/mewtwo.png",
+    "name": "./assets/mewtwo.png",
+    "sprite": "/mewtwo.png",
     "element": "psychic"
   },
   {
     "name": "mew",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/mew.png",
+    "sprite": "./assets/mew.png",
     "element": "psychic"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "name": "sandshrew",
-    "sprite": "https://img.pokemondb.net/sprites/x-y/normal/sandshrew.png",
+    "sprite": "./assets/sandshrew.png",
     "element": "ground"
   },
   {
