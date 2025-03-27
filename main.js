@@ -138,17 +138,6 @@ async function jouer(unNombreDePaire) {
         return uneListeDeListesMelangees;
     }
     
-    (async () => {
-        const monNombreDePaire = 6;
-        const monNombreDePaireParZoneDeChasse = 8;
-        const maListeDePokemonsComplete = faireUneListeDePokemonComplete();
-        const maListeDePokemonsReduite = faireUneListeDePokemonsReduite(maListeDePokemonsComplete, monNombreDePaire);
-        const maListeDeListesDePokemons = faireUnelisteDelistesDePokemons(maListeDePokemonsReduite, monNombreDePaireParZoneDeChasse);
-        const maListeDeListesDePaireDePokemons = faireUneListeDeListesDePaireDePokemons(maListeDeListesDePokemons);
-        const maListeDeListesDePaireDePokemonsMelangees = melangerUneListeDansUneListe(maListeDeListesDePaireDePokemons);
-        console.log(maListeDeListesDePaireDePokemonsMelangees);
-    })();
-    
     function creerUnBoutonDeDeplacement(index) {
         let btn = document.createElement("button");
         btn.innerText = `Zone ${index + 1}`;
