@@ -81,22 +81,22 @@
   },
   {
     "name": "tauros",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/tauros.png",
+    "sprite": "./assets/pokemons/tauros.png",
     "element": "fighting"
   },
   {
     "name": "machamp",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/machamp.png",
+    "sprite": "./assets/pokemons/machamp.png",
     "element": "fighting"
   },
   {
     "name": "sudowoodo",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/sudowoodo-f.png",
+    "sprite": "./assets/pokemons/sudowoodo-f.png",
     "element": "rock"
   },
   {
     "name": "nosepass",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/nosepass.png",
+    "sprite": "./assets/pokemons/nosepass.png",
     "element": "rock"
   },
   {
@@ -106,12 +106,12 @@
   },
   {
     "name": "klink",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/klink.png",
+    "sprite": "./assets/pokemons/klink.png",
     "element": "steel"
   },
   {
     "name": "klang",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/klang.png",
+    "sprite": "./assets/pokemons/klang.png",
     "element": "steel"
   },
   {"name": "sylveon",
@@ -123,11 +123,11 @@
   "element": "fairy"
   },
   {"name": "volbeat",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/volbeat.png",
+  "sprite": "./assets/pokemons/volbeat.png",
   "element": "bug"
   },
   {"name": "illumise",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/illumise.png",
+  "sprite": "./assets/pokemons/illumise.png",
   "element": "bug"
   },
   {"name": "dratini",
@@ -139,19 +139,19 @@
   "element": "dragon"
   },
   {"name": "raticate",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/raticate.png",
+  "sprite": "./assets/pokemons/raticate.png",
   "element": "normal"
   },
   {"name": "arceus",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/arceus.png",
+  "sprite": "./assets/pokemons/arceus.png",
   "element": "normal"
   },
   {"name": "tornadus",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/tornadus.png",
+  "sprite": "./assets/pokemons/tornadus.png",
   "element": "flying"
   },
   {"name": "pidgeot",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/pidgeot.png",
+  "sprite": "./assets/pokemons/pidgeot.png",
   "element": "flying"
   },
   {"name": "banette",
@@ -159,15 +159,15 @@
   "element": "ghost"
   },
   {"name": "dusclops",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/dusclops.png",
+  "sprite": "./assets/pokemons/dusclops.png",
   "element": "ghost"
   },
   {"name": "arbok",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/arbok.png",
+  "sprite": "./assets/pokemons/arbok.png",
   "element": "poison"
   },
   {"name": "weezing",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/weezing.png",
+  "sprite": "./assets/pokemons/weezing.png",
   "element": "poison"
   }
 ]
