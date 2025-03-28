@@ -169,7 +169,7 @@ body {
 @media (max-width: 800px) {
   #sidebar {
     position: fixed;
-    top: 50vh;
+    top: 80vh;
     width: 100vb;
   }
 }
