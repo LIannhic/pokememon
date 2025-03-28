@@ -166,6 +166,13 @@ body {
   background: rgba(0, 0, 0, 0.5);
   border: 2px solid #fff;
 }
+@media (max-width: 800px) {
+  #sidebar {
+    position: fixed;
+    top: 50vh;
+    width: 100vb;
+  }
+}
 
 #sidebar .liste_pokemons_captures {
   display: flex;
