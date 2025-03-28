@@ -289,20 +289,9 @@ async function jouer(unNombreDePaire) {
     function arreterLeJeu() {
         let cartes = document.querySelectorAll('.box');
         cartes.forEach(carte => {
-            carte.removeEventListener('click', () => {}); // Correction du removeEventListener
+            carte.removeEventListener('click', gererClicCarte); // Correction du removeEventListener
         });
-    
-        let boutonsDeDeplacement = document.querySelectorAll(".btn-chasse");
-        boutonsDeDeplacement.forEach(bouton => {
-            bouton.disabled = true;
-        });
-    
-        // Désactiver tous les clics SAUF sur le bouton rejouer
-        document.querySelectorAll("body *:not(#rejouer)").forEach(element => {
-            element.style.pointerEvents = "none";
-        });
-    
-        // Rendre le bouton rejouer visible et cliquable
+
         let rejouer = document.getElementById('rejouer');
         rejouer.style.display = "block";
         rejouer.style.pointerEvents = "auto";
@@ -320,7 +309,6 @@ async function jouer(unNombreDePaire) {
         document.querySelector(".progress").setAttribute("aria-valuenow", vieRestante);
     
         if (vieRestante === 0) {
-            // Si la vie atteint 0, on arrête le jeu et on affiche le bouton de rejouer
             setTimeout(() => {
                 alert("Vous avez perdu !");
                 arreterLeJeu();  // Arrêter le jeu
@@ -337,110 +325,111 @@ async function jouer(unNombreDePaire) {
 
     function retournerUneCarte() {
         let cartes = document.querySelectorAll('.box');
-        let cartesRetournees = [];
-
         cartes.forEach((carte) => {
-            carte.addEventListener('click', () => {
-                let bush = carte.querySelector('.bush');
-                let pokemon = carte.querySelector('.pokemon');
-                if (!bush || !pokemon || cartesRetournees.includes(carte)) return;
-
-                // condition d'effet
-
-                disparitionDUnCoteDUneCarte(bush);
-                apparitionDUnCoteDUneCarte(pokemon);
-                cartesRetournees.push(carte);
-
-                if (cartesRetournees.length === 2) {
-                    document.body.style.pointerEvents = "none";
-                    compteurDeCoupDeLaPartieEnCours.textContent = parseInt(compteurDeCoupDeLaPartieEnCours.textContent) + 1;
-                    let [carte1, carte2] = cartesRetournees;
-                    let img1 = carte1.querySelector('.pokemon');
-                    let img2 = carte2.querySelector('.pokemon');
-                    if (img1.src === img2.src) {
-                        if (img1.role == "ice") {
-                            creerFlocons();                           
-                        } else if (img1.role == "ground") {
-                            creerTremblement();
-                        } else if (img1.role == "fighting") {
-                            creerCoup()
-                        } else if (img1.role == "rock") {
-                            creerEboulement();
-                        } else if (img1.role == "psychic") {
-                            lancerHallucination({
-                                duration: '4s'
-                            });
-                        } else if (img1.role == "dark") {
-                            initDarkenEffect({
-                                darknessIncrement: 0.01, // chaque pas = 0.01 opacité
-                                animationIntervalDelay: 40, // 40ms par pas
-                                resetDelayAfterDark: 0 // facultatif, ou mets genre 500 pour laisser le noir un peu avant de disparaître
-                            });
-                        } else if (img1.role == "grass") {
-                            initFeuilles();
-                        } else if (img1.role== "electric") {
-                            createLightning();
-                        } else if (img1.role == "fire") {
-                            startFireAnimation('fireCanvas', config);
-                        } else if (img1.role == "steel") {
-                            afficherBarreChromee();
-                        } else if (img1.role == "fairy") {
-                            createtinkle();
-                        } else if (img1.role == "water") {
-                            launchEpicWave();
-                        } else if (img1.role == "poison") {
-                            launchPoisonEffect();
-                        } else if (img1.role == "dragon") {
-                            launchRayquazaIntro({
-                                imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png',
-                                duration: 1000
-                        });
-                        } else if (img1.role == "flying") {
-                            playDiagonalEffect();
-                        } else if (img1.role == "ghost") {
-                            startBlueFlameCircle();
-                        } else if (img1.role == "normal") {
-                            normalEffet();
-                        } else if (img1.role == "bug") {
-                            insecteEssaim();
-                        }
-                        
-                        lancerPokeball(cartesRetournees);
-                        ajouterAuPokedex(img1.src);
-                        jouerCriPokemon(banqueDeSon, img1.title);
-                        cartesRetournees = [];
-                        compteurPairesTrouvees++;
-
-                        if (compteurPairesTrouvees === monNombreDePaire) {
-                            setTimeout(() => {
-                                let coupsActuels = parseInt(compteurDeCoupDeLaPartieEnCours.textContent);
-                                let recordActuel = parseInt(compteurDeCoupRecord.textContent);
-
-                                if (isNaN(recordActuel) || coupsActuels < recordActuel) {
-                                    compteurDeCoupRecord.textContent = coupsActuels;
-                                    localStorage.setItem("record", coupsActuels);
-                                }
-
-                                alert("Bravo ! Vous avez gagné !");
-                                afficherLeBoutonRejouer();
-                            }, 1000);
-                        }
-                        document.body.style.pointerEvents = "auto";
-                    } else {
-                        setTimeout(() => {
-                            prendreDesCoups(monNombreDePaire);
-                            apparitionDUnCoteDUneCarte(carte1.querySelector('.bush'));
-                            disparitionDUnCoteDUneCarte(carte1.querySelector('.pokemon'));
-                            apparitionDUnCoteDUneCarte(carte2.querySelector('.bush'));
-                            disparitionDUnCoteDUneCarte(carte2.querySelector('.pokemon'));
-                            cartesRetournees = [];
-                            document.body.style.pointerEvents = "auto";
-                        }, 1000);
-                    }
-                }
-            });
+            carte.addEventListener('click', gererClicCarte);
         });
     }
+    
+    let cartesRetournees = [];
+    
+    function gererClicCarte(event) {
+        let carte = event.currentTarget;
+        if (cartesRetournees.includes(carte)) return;
+    
+        retournerCarte(carte);
+        cartesRetournees.push(carte);
+    
+        if (cartesRetournees.length === 2) {
+            verifierCartesRetournees();
+        }
+    }
+    
+    function retournerCarte(carte) {
+        let bush = carte.querySelector('.bush');
+        let pokemon = carte.querySelector('.pokemon');
+        if (!bush || !pokemon) return;
+    
+        disparitionDUnCoteDUneCarte(bush);
+        apparitionDUnCoteDUneCarte(pokemon);
+    }
+    
+    function verifierCartesRetournees() {
+        document.body.style.pointerEvents = "none";
+        compteurDeCoupDeLaPartieEnCours.textContent = parseInt(compteurDeCoupDeLaPartieEnCours.textContent) + 1;
+    
+        let [carte1, carte2] = cartesRetournees;
+        let img1 = carte1.querySelector('.pokemon');
+        let img2 = carte2.querySelector('.pokemon');
+    
+        if (img1.src === img2.src) {
+            appliquerEffet(img1.role);
+            gererMatchTrouve(img1);
+        } else {
+            gererEchecMatch();
+        }
+    }
+    
+    function appliquerEffet(role) {
+        switch (role) {
+            case "ice": creerFlocons(); break;
+            case "ground": creerTremblement(); break;
+            case "fighting": creerCoup(); break;
+            case "rock": creerEboulement(); break;
+            case "psychic": lancerHallucination({ duration: '4s' }); break;
+            case "dark": initDarkenEffect({ darknessIncrement: 0.01, animationIntervalDelay: 40, resetDelayAfterDark: 0 }); break;
+            case "grass": initFeuilles(); break;
+            case "electric": createLightning(); break;
+            case "fire": startFireAnimation('fireCanvas', config); break;
+            case "steel": afficherBarreChromee(); break;
+            case "fairy": createtinkle(); break;
+            case "water": launchEpicWave(); break;
+            case "poison": launchPoisonEffect(); break;
+            case "dragon": launchRayquazaIntro({ imageUrl: './images/Rayquaza-Pokemon-Transparent-File.png', duration: 1000 }); break;
+            case "flying": playDiagonalEffect(); break;
+            case "ghost": startBlueFlameCircle(); break;
+            case "normal": normalEffet(); break;
+            case "bug": insecteEssaim(); break;
+        }
+    }
+    
+    function gererMatchTrouve(img1) {
+        lancerPokeball(cartesRetournees);
+        ajouterAuPokedex(img1.src);
+        jouerCriPokemon(banqueDeSon, img1.title);
+        cartesRetournees = [];
+        compteurPairesTrouvees++;
+    
+        if (compteurPairesTrouvees === monNombreDePaire) {
+            setTimeout(() => {
+                let coupsActuels = parseInt(compteurDeCoupDeLaPartieEnCours.textContent);
+                let recordActuel = parseInt(compteurDeCoupRecord.textContent);
+    
+                if (isNaN(recordActuel) || coupsActuels < recordActuel) {
+                    compteurDeCoupRecord.textContent = coupsActuels;
+                    localStorage.setItem("record", coupsActuels);
+                }
+    
+                alert("Bravo ! Vous avez gagné !");
+                partieGagnee = true; // Marquer la victoire
+                afficherLeBoutonRejouer();
+            }, 1000);
+        }
+        document.body.style.pointerEvents = "auto";
+    }
+    
+    function gererEchecMatch() {
+        setTimeout(() => {
+            let [carte1, carte2] = cartesRetournees;
+            prendreDesCoups(monNombreDePaire);
+            apparitionDUnCoteDUneCarte(carte1.querySelector('.bush'));
+            disparitionDUnCoteDUneCarte(carte1.querySelector('.pokemon'));
+            apparitionDUnCoteDUneCarte(carte2.querySelector('.bush'));
+            disparitionDUnCoteDUneCarte(carte2.querySelector('.pokemon'));
+            cartesRetournees = [];
+            document.body.style.pointerEvents = "auto";
+        }, 1000);
+    }
+    
 
     remplirBarreDeVie();
     const monNombreDePaireParZoneDeChasse = 8;
@@ -457,12 +446,14 @@ async function jouer(unNombreDePaire) {
 
 // Démarrer le jeu
 let monNombreDePaire = 6;
+let partieGagnee = false; // Nouvelle variable pour suivre l'état de la partie
 
 jouer(monNombreDePaire);
 
 rejouer.addEventListener('click', () => {
-    if (monNombreDePaire < 34) {
-        monNombreDePaire += 2;
+    if (partieGagnee && monNombreDePaire < 34) {
+        monNombreDePaire += 2; // Augmente seulement en cas de victoire
     }
     jouer(monNombreDePaire);
+    partieGagnee = false; // Réinitialisation pour la prochaine partie
 });
