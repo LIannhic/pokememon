@@ -391,11 +391,17 @@ async function jouer(unNombreDePaire) {
             case "bug": insecteEssaim(); break;
         }
     }
+
+    function desactiverPaireTrouvee(carte1, carte2) {
+        carte1.removeEventListener('click', gererClicCarte);
+        carte2.removeEventListener('click', gererClicCarte);
+    }
     
     function gererMatchTrouve(img1) {
         lancerPokeball(cartesRetournees);
         ajouterAuPokedex(img1.src);
         jouerCriPokemon(banqueDeSon, img1.title);
+        desactiverPaireTrouvee(cartesRetournees[0], cartesRetournees[1]);
         cartesRetournees = [];
         compteurPairesTrouvees++;
     
