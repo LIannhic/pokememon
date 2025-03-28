@@ -91,7 +91,7 @@
   },
   {
     "name": "sudowoodo",
-    "sprite": "./assets/pokemons/sudowoodo-f.png",
+    "sprite": "./assets/pokemons/sudowoodo.png",
     "element": "rock"
   },
   {
