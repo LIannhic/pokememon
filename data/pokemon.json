@@ -101,7 +101,7 @@
   },
   {
     "name": "meowth",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/meowth.png",
+    "sprite": "./assets/pokemons/meowth.png",
     "element": "dark"
   },
   {
@@ -115,11 +115,11 @@
     "element": "steel"
   },
   {"name": "sylveon",
-  "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/sylveon.png",
+  "sprite": "./assets/pokemons/sylveon.png",
   "element": "fairy"
   },
   {"name": "togepi",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/togepi.png",
+  "sprite": "./assets/pokemons/togepi.png",
   "element": "fairy"
   },
   {"name": "volbeat",
@@ -131,11 +131,11 @@
   "element": "bug"
   },
   {"name": "dratini",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/dratini.png",
+  "sprite": "./assets/pokemons/dratini.png",
   "element": "dragon"
   },
   {"name": "shelgon",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/shelgon.png",
+  "sprite": "./assets/pokemons/shelgon.png",
   "element": "dragon"
   },
   {"name": "raticate",
@@ -155,7 +155,7 @@
   "element": "flying"
   },
   {"name": "banette",
-  "sprite": "https://img.pokemondb.net/sprites/black-white/normal/banette.png",
+  "sprite": "./assets/pokemons/banette.png",
   "element": "ghost"
   },
   {"name": "dusclops",
