@@ -287,16 +287,26 @@ async function jouer(unNombreDePaire) {
     }
 
     function arreterLeJeu() {
-        let cartes = document.querySelectorAll('.bush');
+        let cartes = document.querySelectorAll('.box');
         cartes.forEach(carte => {
-            carte.removeEventListener('click', );
+            carte.removeEventListener('click', () => {}); // Correction du removeEventListener
         });
+    
         let boutonsDeDeplacement = document.querySelectorAll(".btn-chasse");
         boutonsDeDeplacement.forEach(bouton => {
             bouton.disabled = true;
         });
-        document.body.style.pointerEvents = "none";
-    }
+    
+        // Désactiver tous les clics SAUF sur le bouton rejouer
+        document.querySelectorAll("body *:not(#rejouer)").forEach(element => {
+            element.style.pointerEvents = "none";
+        });
+    
+        // Rendre le bouton rejouer visible et cliquable
+        let rejouer = document.getElementById('rejouer');
+        rejouer.style.display = "block";
+        rejouer.style.pointerEvents = "auto";
+    }    
 
     let mesPointsDeVieDeDepart = 100;
     let vieRestante = mesPointsDeVieDeDepart;

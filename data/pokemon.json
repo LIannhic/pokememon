@@ -1,82 +1,82 @@
 [
   {
     "name": "charmander",
-    "sprite": "./assets/charmander.png",
+    "sprite": "./assets/pokemons/charmander.png",
     "element": "fire"
   },
   {
     "name": "squirtle",
-    "sprite": "./assets/squirtle.png",
+    "sprite": "./assets/pokemons/squirtle.png",
     "element": "water"
   },
   {
     "name": "bulbasaur",
-    "sprite": "./assets/bulbasaur.png",
+    "sprite": "./assets/pokemons/bulbasaur.png",
     "element": "grass"
   },
   {
     "name": "pikachu",
-    "sprite": "./assets/pikachu.png",
+    "sprite": "./assets/pokemons/pikachu.png",
     "element": "electric"
   },
   {
-    "name": "./assets/mewtwo.png",
-    "sprite": "/mewtwo.png",
+    "name": "mewtwo.png",
+    "sprite": "./assets/pokemons/mewtwo.png",
     "element": "psychic"
   },
   {
     "name": "mew",
-    "sprite": "./assets/mew.png",
+    "sprite": "./assets/pokemons/mew.png",
     "element": "psychic"
   },
   {
     "name": "jolteon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/jolteon.png",
+    "sprite": "./assets/pokemons/jolteon.png",
     "element": "electric"
   },
   {
     "name": "flareon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/flareon.png",
+    "sprite": "./assets/pokemons/flareon.png",
     "element": "fire"
   },
   {
     "name": "vaporeon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/vaporeon.png",
+    "sprite": "./assets/pokemons/vaporeon.png",
     "element": "water"
   },
   {
     "name": "espeon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/espeon.png",
+    "sprite": "./assets/pokemons/espeon.png",
     "element": "psychic"
   },
   {
     "name": "umbreon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/umbreon.png",
+    "sprite": "./assets/pokemons/umbreon.png",
     "element": "dark"
   },
   {
     "name": "leafeon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/leafeon.png",
+    "sprite": "./assets/pokemons/leafeon.png",
     "element": "grass"
   },
   {
     "name": "glaceon",
-    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/glaceon.png",
+    "sprite": "./assets/pokemons/glaceon.png",
     "element": "ice"
   },
   {
     "name": "vanillite",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/vanillite.png",
+    "sprite": "./assets/pokemons/vanillite.png",
     "element": "ice"
   },
   {
     "name": "sandshrew",
-    "sprite": "./assets/sandshrew.png",
+    "sprite": "./assets/pokemons/sandshrew.png",
     "element": "ground"
   },
   {
     "name": "sandslash",
-    "sprite": "https://img.pokemondb.net/sprites/black-white/normal/sandslash.png",
+    "sprite": "./assets/pokemons/sandslash.png",
     "element": "ground"
   },
   {

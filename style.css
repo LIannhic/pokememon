@@ -113,7 +113,7 @@ body {
 
 /* Style des cases */
 .box {
-  min-height: 100px;
+  height: 100px;
   position: relative;
 }
 
