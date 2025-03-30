@@ -199,13 +199,19 @@ async function jouer(unNombreDePaire) {
     
 
     function creerLeDosDesCartes() {
-        document.querySelectorAll('.box').forEach((carte) => {
-            const dosDeCarte = document.createElement("img");
-            dosDeCarte.src = "./assets/bush.webp";
-            dosDeCarte.classList.add("bush");
-            carte.appendChild(dosDeCarte);
+        let uneGrilleDeJeu = document.querySelectorAll('.zoneDeCapture'); // Sélection de toutes les zones
+        uneGrilleDeJeu.forEach((zone, index) => { // Parcourt chaque zone de capture
+            let cartes = zone.querySelectorAll('.box'); // Sélection des cartes dans cette zone
+    
+            cartes.forEach((carte) => {
+                const dosDeCarte = document.createElement("img");
+                dosDeCarte.src = `./assets/bush${index}.webp`; // Utilise l'index de la zone pour changer l'image
+                dosDeCarte.classList.add("bush");
+                carte.appendChild(dosDeCarte); // Ajoute l'image à la carte
+            });
         });
-    }
+    };
+    
 
     function creerLaFaceDesCartes(uneListeDeListesDePaireDePokemonsMelangees) {
         const zones = document.querySelectorAll('.zoneDeCapture');
