@@ -38,13 +38,9 @@ async function jouer(unNombreDePaire) {
     }
 
     compteurDeCoupDeLaPartieEnCours.textContent = 0;
-    masquerLeBoutonRejouer();
-    pokedex.innerHTML = ""; // Réinitialisation du Pokédex
-
+    pokedex.innerHTML = "";
     const monNombreDePaire = unNombreDePaire;
     let compteurPairesTrouvees = 0;
-
-    // Récupération des Pokémon depuis le fichier JSON
     const response = await fetch('./data/pokemon.json');
     const maListeDePokemonsComplete = await response.json();
     
@@ -144,74 +140,61 @@ async function jouer(unNombreDePaire) {
         btn.classList.add("btn-chasse");
         btn.setAttribute("data-target", `zoneDeCapture${index}`);
         document.getElementById("boutons_navigation").appendChild(btn);
-    
         btn.addEventListener("click", function () {
-            // Masquer toutes les zones
             document.querySelectorAll(".zoneDeCapture").forEach(zone => {
-                zone.classList.add("visually-hidden"); // Utilisation de la classe 'visually-hidden' pour masquer
+                zone.classList.add("visually-hidden");
             });
-    
-            // Afficher la zone sélectionnée
             document.getElementById(`zoneDeCapture${index}`).classList.remove("visually-hidden");
         });
     }
 
     function surpriseDuDeplacement() {
-        const boutonsDeDeplacement = document.querySelectorAll(".btn-chasse"); // Sélectionner tous les boutons avec la classe .btn-chasse
-        if (boutonsDeDeplacement.length === 1) { // Vérifier s'il n'y a qu'un seul bouton
-            boutonsDeDeplacement[0].style.display = "none"; // Masquer le seul bouton
+        const boutonsDeDeplacement = document.querySelectorAll(".btn-chasse");
+        if (boutonsDeDeplacement.length === 1) {
+            boutonsDeDeplacement[0].style.display = "none";
         }
     }
     
-    
     function creerLesEmplacementsDesCartes(unNombreDePaire) {
         let uneGrilleDeJeu = document.getElementById('grille_de_jeu');
-        uneGrilleDeJeu.innerHTML = "";  // Vider la grille au démarrage
-        document.getElementById("boutons_navigation").innerHTML = "";  // Vider les boutons au démarrage
-    
+        uneGrilleDeJeu.innerHTML = "";
+        document.getElementById("boutons_navigation").innerHTML = "";
         const unTotalDeCartes = unNombreDePaire * 2;
         const uneTailleDeZone = 16;
         const unNombreDeZones = Math.ceil(unTotalDeCartes / uneTailleDeZone);
-    
         for (let i = 0; i < unNombreDeZones; i++) {
             let uneZoneDeChasse = document.createElement("div");
             uneZoneDeChasse.classList.add("row", "row-cols-4", "zoneDeCapture");
             uneZoneDeChasse.id = `zoneDeCapture${i}`;
             uneGrilleDeJeu.appendChild(uneZoneDeChasse);
             creerUnBoutonDeDeplacement(i);
-            // Initialement, on masque toutes les zones sauf la première
             if (i > 0) {
-                uneZoneDeChasse.classList.add("visually-hidden"); // Masquer les zones sauf la première
+                uneZoneDeChasse.classList.add("visually-hidden")
             }
-    
-            // Déterminer le nombre de cartes pour cette zone
             const unNombreDeCartesDansUneZone = 
                 (i === unNombreDeZones - 1) ? unTotalDeCartes % uneTailleDeZone || uneTailleDeZone : uneTailleDeZone;
-    
             for (let j = 0; j < unNombreDeCartesDansUneZone; j++) {
                 const carte = document.createElement("div");
                 carte.classList.add("col", "box");
                 uneZoneDeChasse.appendChild(carte);
             }
         }
-        surpriseDuDeplacement(); // Appel de la fonction pour masquer les boutons si nécessaire
+        surpriseDuDeplacement();
     }
-    
 
     function creerLeDosDesCartes() {
-        let uneGrilleDeJeu = document.querySelectorAll('.zoneDeCapture'); // Sélection de toutes les zones
-        uneGrilleDeJeu.forEach((zone, index) => { // Parcourt chaque zone de capture
-            let cartes = zone.querySelectorAll('.box'); // Sélection des cartes dans cette zone
-    
+        let uneGrilleDeJeu = document.querySelectorAll('.zoneDeCapture');
+        uneGrilleDeJeu.forEach((zone, index) => {
+            let cartes = zone.querySelectorAll('.box');
             cartes.forEach((carte) => {
                 const dosDeCarte = document.createElement("img");
-                dosDeCarte.src = `./assets/bush${index}.webp`; // Utilise l'index de la zone pour changer l'image
+                let saison = index % 4;
+                dosDeCarte.src = `./assets/bush${saison}.webp`;
                 dosDeCarte.classList.add("bush");
-                carte.appendChild(dosDeCarte); // Ajoute l'image à la carte
+                carte.appendChild(dosDeCarte);
             });
         });
     };
-    
 
     function creerLaFaceDesCartes(uneListeDeListesDePaireDePokemonsMelangees) {
         const zones = document.querySelectorAll('.zoneDeCapture');
@@ -260,31 +243,17 @@ async function jouer(unNombreDePaire) {
             const pokeball = document.createElement("img");
             pokeball.className = `pokeball_de_capture pokeball_${index}`;
             pokeball.src = "./assets/pokeball.png";
-            
-            // Dimensions de l'écran
             const largeurEcran = window.innerWidth;
             const hauteurEcran = window.innerHeight;
-    
-            // Ajouter la Pokéball au DOM pour récupérer sa taille
             document.body.appendChild(pokeball);
-            const pokeballSize = 300; // Taille définie dans le CSS
-        
-            // Position initiale centrée en bas
+            const pokeballSize = 300;
             pokeball.style.left = `${(largeurEcran / 2) - (pokeballSize / 2)}px`;
             pokeball.style.top = `${hauteurEcran}px`;
-    
-            // Récupérer la position du Pokémon
             const positionPokemon = carte.getBoundingClientRect();
-    
-            // Calcul du centre du Pokémon
             const cibleX = positionPokemon.left - (largeurEcran / 2) + (pokeballSize / 3);
             const cibleY = positionPokemon.top - (hauteurEcran + (pokeballSize / 4));
-    
-            // Appliquer la position cible en variables CSS
             pokeball.style.setProperty("--cible-x", `${cibleX}px`);
             pokeball.style.setProperty("--cible-y", `${cibleY}px`);
-        
-            // Supprimer la Pokéball après l'animation
             setTimeout(() => {
                 pokeball.remove();
                 capturerPaireDePokemons(cartes);
@@ -295,9 +264,8 @@ async function jouer(unNombreDePaire) {
     function arreterLeJeu() {
         let cartes = document.querySelectorAll('.box');
         cartes.forEach(carte => {
-            carte.removeEventListener('click', gererClicCarte); // Correction du removeEventListener
+            carte.removeEventListener('click', gererClicCarte);
         });
-
         let rejouer = document.getElementById('rejouer');
         rejouer.style.display = "block";
         rejouer.style.pointerEvents = "auto";
@@ -341,10 +309,8 @@ async function jouer(unNombreDePaire) {
     function gererClicCarte(event) {
         let carte = event.currentTarget;
         if (cartesRetournees.includes(carte)) return;
-    
         retournerCarte(carte);
         cartesRetournees.push(carte);
-    
         if (cartesRetournees.length === 2) {
             verifierCartesRetournees();
         }
@@ -354,7 +320,6 @@ async function jouer(unNombreDePaire) {
         let bush = carte.querySelector('.bush');
         let pokemon = carte.querySelector('.pokemon');
         if (!bush || !pokemon) return;
-    
         disparitionDUnCoteDUneCarte(bush);
         apparitionDUnCoteDUneCarte(pokemon);
     }
@@ -362,11 +327,9 @@ async function jouer(unNombreDePaire) {
     function verifierCartesRetournees() {
         document.body.style.pointerEvents = "none";
         compteurDeCoupDeLaPartieEnCours.textContent = parseInt(compteurDeCoupDeLaPartieEnCours.textContent) + 1;
-    
         let [carte1, carte2] = cartesRetournees;
         let img1 = carte1.querySelector('.pokemon');
         let img2 = carte2.querySelector('.pokemon');
-    
         if (img1.src === img2.src) {
             appliquerEffet(img1.role);
             gererMatchTrouve(img1);
@@ -410,17 +373,14 @@ async function jouer(unNombreDePaire) {
         desactiverPaireTrouvee(cartesRetournees[0], cartesRetournees[1]);
         cartesRetournees = [];
         compteurPairesTrouvees++;
-    
         if (compteurPairesTrouvees === monNombreDePaire) {
             setTimeout(() => {
                 let coupsActuels = parseInt(compteurDeCoupDeLaPartieEnCours.textContent);
                 let recordActuel = parseInt(compteurDeCoupRecord.textContent);
-    
                 if (isNaN(recordActuel) || coupsActuels < recordActuel) {
                     compteurDeCoupRecord.textContent = coupsActuels;
                     localStorage.setItem("record", coupsActuels);
                 }
-    
                 alert("Bravo ! Vous avez gagné !");
                 partieGagnee = true; // Marquer la victoire
                 afficherLeBoutonRejouer();
@@ -428,7 +388,7 @@ async function jouer(unNombreDePaire) {
         }
         document.body.style.pointerEvents = "auto";
     }
-    
+
     function gererEchecMatch() {
         setTimeout(() => {
             let [carte1, carte2] = cartesRetournees;
@@ -441,8 +401,8 @@ async function jouer(unNombreDePaire) {
             document.body.style.pointerEvents = "auto";
         }, 1000);
     }
-    
 
+    masquerLeBoutonRejouer();
     remplirBarreDeVie();
     const monNombreDePaireParZoneDeChasse = 8;
     const maListeDePokemonsCompleteEtMelangee = melangerUneListe(maListeDePokemonsComplete)
@@ -456,7 +416,6 @@ async function jouer(unNombreDePaire) {
     retournerUneCarte();
 }
 
-// Démarrer le jeu
 let monNombreDePaire = 6;
 let partieGagnee = false; // Nouvelle variable pour suivre l'état de la partie
 
