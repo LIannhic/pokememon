@@ -5,19 +5,19 @@
     "element": "fire"
   },
   {
+    "name": "flareon",
+    "sprite": "./assets/pokemons/flareon.png",
+    "element": "fire"
+  },
+  {
     "name": "squirtle",
     "sprite": "./assets/pokemons/squirtle.png",
     "element": "water"
   },
   {
-    "name": "bulbasaur",
-    "sprite": "./assets/pokemons/bulbasaur.png",
-    "element": "grass"
-  },
-  {
-    "name": "pikachu",
-    "sprite": "./assets/pokemons/pikachu.png",
-    "element": "electric"
+    "name": "vaporeon",
+    "sprite": "./assets/pokemons/vaporeon.png",
+    "element": "water"
   },
   {
     "name": "mewtwo.png",
@@ -30,33 +30,28 @@
     "element": "psychic"
   },
   {
-    "name": "jolteon",
-    "sprite": "./assets/pokemons/jolteon.png",
-    "element": "electric"
-  },
-  {
-    "name": "flareon",
-    "sprite": "./assets/pokemons/flareon.png",
-    "element": "fire"
-  },
-  {
-    "name": "vaporeon",
-    "sprite": "./assets/pokemons/vaporeon.png",
-    "element": "water"
-  },
-  {
     "name": "espeon",
     "sprite": "./assets/pokemons/espeon.png",
     "element": "psychic"
   },
   {
-    "name": "umbreon",
-    "sprite": "./assets/pokemons/umbreon.png",
-    "element": "dark"
+    "name": "jolteon",
+    "sprite": "./assets/pokemons/jolteon.png",
+    "element": "electric"
+  },
+  {
+    "name": "pikachu",
+    "sprite": "./assets/pokemons/pikachu.png",
+    "element": "electric"
   },
   {
     "name": "leafeon",
     "sprite": "./assets/pokemons/leafeon.png",
+    "element": "grass"
+  },
+  {
+    "name": "bulbasaur",
+    "sprite": "./assets/pokemons/bulbasaur.png",
     "element": "grass"
   },
   {
@@ -105,6 +100,11 @@
     "element": "dark"
   },
   {
+    "name": "umbreon",
+    "sprite": "./assets/pokemons/umbreon.png",
+    "element": "dark"
+  },
+  {
     "name": "klink",
     "sprite": "./assets/pokemons/klink.png",
     "element": "steel"
@@ -114,60 +114,74 @@
     "sprite": "./assets/pokemons/klang.png",
     "element": "steel"
   },
-  {"name": "sylveon",
-  "sprite": "./assets/pokemons/sylveon.png",
-  "element": "fairy"
+  {
+    "name": "sylveon",
+    "sprite": "./assets/pokemons/sylveon.png",
+    "element": "fairy"
   },
-  {"name": "togepi",
-  "sprite": "./assets/pokemons/togepi.png",
-  "element": "fairy"
+  {
+    "name": "togepi",
+    "sprite": "./assets/pokemons/togepi.png",
+    "element": "fairy"
   },
-  {"name": "volbeat",
-  "sprite": "./assets/pokemons/volbeat.png",
-  "element": "bug"
+  {
+    "name": "volbeat",
+    "sprite": "./assets/pokemons/volbeat.png",
+    "element": "bug"
   },
-  {"name": "illumise",
-  "sprite": "./assets/pokemons/illumise.png",
-  "element": "bug"
+  {
+    "name": "illumise",
+    "sprite": "./assets/pokemons/illumise.png",
+    "element": "bug"
   },
-  {"name": "dratini",
-  "sprite": "./assets/pokemons/dratini.png",
-  "element": "dragon"
+  {
+    "name": "dratini",
+    "sprite": "./assets/pokemons/dratini.png",
+    "element": "dragon"
   },
-  {"name": "shelgon",
-  "sprite": "./assets/pokemons/shelgon.png",
-  "element": "dragon"
+  {
+    "name": "shelgon",
+    "sprite": "./assets/pokemons/shelgon.png",
+    "element": "dragon"
   },
-  {"name": "raticate",
-  "sprite": "./assets/pokemons/raticate.png",
-  "element": "normal"
+  {
+    "name": "raticate",
+    "sprite": "./assets/pokemons/raticate.png",
+    "element": "normal"
   },
-  {"name": "arceus",
-  "sprite": "./assets/pokemons/arceus.png",
-  "element": "normal"
+  {
+    "name": "arceus",
+    "sprite": "./assets/pokemons/arceus.png",
+    "element": "normal"
   },
-  {"name": "tornadus",
-  "sprite": "./assets/pokemons/tornadus.png",
-  "element": "flying"
+  {
+    "name": "tornadus",
+    "sprite": "./assets/pokemons/tornadus.png",
+    "element": "flying"
   },
-  {"name": "pidgeot",
-  "sprite": "./assets/pokemons/pidgeot.png",
-  "element": "flying"
+  {
+    "name": "pidgeot",
+    "sprite": "./assets/pokemons/pidgeot.png",
+    "element": "flying"
   },
-  {"name": "banette",
-  "sprite": "./assets/pokemons/banette.png",
-  "element": "ghost"
+  {
+    "name": "banette",
+    "sprite": "./assets/pokemons/banette.png",
+    "element": "ghost"
   },
-  {"name": "dusclops",
-  "sprite": "./assets/pokemons/dusclops.png",
-  "element": "ghost"
+  {
+    "name": "dusclops",
+    "sprite": "./assets/pokemons/dusclops.png",
+    "element": "ghost"
   },
-  {"name": "arbok",
-  "sprite": "./assets/pokemons/arbok.png",
-  "element": "poison"
+  {
+    "name": "arbok",
+    "sprite": "./assets/pokemons/arbok.png",
+    "element": "poison"
   },
-  {"name": "weezing",
-  "sprite": "./assets/pokemons/weezing.png",
-  "element": "poison"
+  {
+    "name": "weezing",
+    "sprite": "./assets/pokemons/weezing.png",
+    "element": "poison"
   }
 ]
